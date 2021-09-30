@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+    	<title>Матрица</title>
+      <meta charset="UTF-8"> 
+    </head>
+    <body>
+      <script>
+        //Объявление переменных
+        let answer;
+        let matrix = [];
+        //Цикл
+        do{
+          alert(createMatrix(prompt("Enter m:"), prompt("Enter n:")));
+          answer = prompt("Would you like to repeat the program?(y/n):")
+        }while(answer !== "n");
+        //Функция, создающая матрицу 
+        function createMatrix(m, n){
+          for (let i = 0; i < m; i++){
+            matrix[i] = ["\n"];
+            for (let j = 0; j < n; j++){
+              matrix[i][j+1] = Math.floor(Math.random() * 20) - 19;
+            }
+          }
+          matrix = matrix.toString();
+          return matrix.split(',').join('   ');
+        }
+      </script>
+    </body>
+</html>

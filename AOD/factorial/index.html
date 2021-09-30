@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+    	<title>Факториал</title>
+      <meta charset="UTF-8"> 
+    </head>
+    <body>
+      <script>
+        //Объявление переменных
+        let n;
+        let answer;
+        //Цикл
+        do{
+          alert(factorial(prompt("Enter the number:")));
+          answer = prompt("Would you like to repeat the program?(y/n):")
+        }while(answer !== "n");
+        //Функция вычисления факторила
+        function factorial(n){
+          if (n > 1){
+            return n *= factorial(n-1);
+          }else{
+            return n = 1;
+          }
+        }
+      </script>
+    </body>
+</html>
