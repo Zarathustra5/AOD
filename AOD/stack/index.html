@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+    	<title>Стек</title>
+      <meta charset="UTF-8"> 
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+      <meta name="format-detection" content="telephone=0">
+    </head>
+    <body>
+      <script>
+        //Объявление переменных
+        let mas = [],
+            sp = 0,
+            answer,
+            isProgramActive = true;
+
+        //Функция добавления элемента в стек (не больше 5 элементов)
+        function add(){
+          if (sp < 5){
+            answer = prompt("Введите число: ");
+            mas[sp] = answer;
+            sp++;
+          }else{
+            alert("Стек заполнен")
+          }
+        }
+
+        //Функция удаления элементов из стека 
+        function del(){
+          if (sp > 0){
+            mas[sp-1] = undefined;
+            sp--;
+          }else{
+            alert("Стек пустой")
+          }
+        }
+
+        //Функция вывода стека
+        function display(){
+          alert(mas.toString().split(",").join("  "));
+          console.log(mas[2]);
+        }
+
+        //Функция вызова диалогового меню
+        function menu(){
+          answer = prompt("1.Добавить элемент \n2.Удалить элемент \n3.Вывести стек \n4.Выйти");
+          switch(answer){
+            case "1":
+              add(); 
+              break;
+            case "2":
+              del();
+              break;
+            case "3":
+              display();
+              break;
+            case "4":
+              isProgramActive = false;
+              break
+            default:
+              alert("Неправильный ответ");
+          }
+        } 
+
+        //Зацикливание меню
+        do{menu()}while(isProgramActive);
+      </script>
+    </body>
+</html>
