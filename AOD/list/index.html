@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+    	<title>Список</title>
+      <meta charset="UTF-8"> 
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+      <meta name="format-detection" content="telephone=0">
+    </head>
+    <body>
+      <script>
+        //Объявление переменных
+        let mas = [],
+            count = 0,
+            answer,
+            n1,
+            n2,
+            n2Index,
+            beforeAfter,
+            isNumberInMas,
+            isProgramActive = true;
+
+        //Функция добавления элемента в список (не больше 5 элементов)
+        function add(){
+          //Проверка массива на заполненность
+          if (count < 5){
+            n1 = prompt("Введите число, которое следует добавить: ");
+            //Проверка массива на пустоту
+            if (count == 0){
+              mas[count] = n1;
+              count++;
+            }else{
+              n2 = prompt("Введите число из списка: ");
+              //Проверка есть ли число в списке
+              isNumberInMas = false;
+              for (let i = 0; i < count; i++){
+                if (mas[i] == n2){
+                  isNumberInMas = true;
+                  n2Index = i;
+                }
+              }
+              if (isNumberInMas){
+                beforeAfter = prompt("Вставка числа (перед/после): ");
+                if (beforeAfter == "перед"){
+                  for (let i = count; i >= n2Index; i--){
+                    mas[i+1] = mas[i];
+                  }
+                  mas[n2Index] = n1;
+                  count++;
+                }else{
+                  for (let i = count; i > n2Index; i--){
+                    mas[i+1] = mas[i];
+                  }
+                  mas[n2Index+1] = n1;
+                  count++;
+                }
+              }else{
+                alert("Данного числа нет в списке");
+              }
+            }
+          }else{
+            alert("Список заполнен")
+          }
+        }
+
+        //Функция удаления элементов из списка
+        function del(){
+          //Проверка списка на пустоту
+          if (count > 0){
+            n2 = prompt("Введите число, которое следует удалить: ");
+            //Проверка есть ли число в списке
+            isNumberInMas = false;
+            for (let i = 0; i < count; i++){
+              if (mas[i] == n2){
+                isNumberInMas = true;
+                n2Index = i;
+              }
+            }
+            if (isNumberInMas){
+              for (let i = n2Index; i < count; i++){
+                mas[i] = mas[i+1];
+              }
+              mas[count] = undefined;
+              count--;
+            }else{
+              alert("Данного числа нет в списке");
+            }
+          }else{
+            alert("Список пустой")
+          }
+        }
+
+        //Функция вывода списка
+        function display(){
+          alert(mas.toString().split(",").join("  "));
+        }
+
+        //Функция вызова диалогового меню
+        function menu(){
+          answer = prompt("1.Добавить элемент \n2.Удалить элемент \n3.Вывести список \n4.Выйти");
+          switch(answer){
+            case "1":
+              add(); 
+              break;
+            case "2":
+              del();
+              break;
+            case "3":
+              display();
+              break;
+            case "4":
+              isProgramActive = false;
+              break
+            default:
+              alert("Неправильный ответ");
+          }
+        } 
+
+        //Зацикливание меню
+        do{menu()}while(isProgramActive);
+      </script>
+    </body>
+</html>
