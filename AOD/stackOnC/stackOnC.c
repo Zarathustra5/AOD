@@ -7,27 +7,20 @@
 struct StackItem
 {
   char info[80];
-  int pointer;
   struct StackItem *pred;
 };
 
 //Объявление переменных
 int answer;
-int sp = 0;
 _Bool isProgramActive = true;
-int mas[5];
 struct StackItem *SP;
 struct StackItem *pTemp;
-int *pArrInt;
 
 int main()
 {
-    SP = NULL;
-    pTemp = malloc(sizeof(struct StackItem));
-    pTemp -> pointer = 0;
-    pArrInt = malloc(5 * sizeof(int));
-    //Зацикливание меню
-    do{Menu();}while(isProgramActive);
+  SP = NULL;
+  //Зацикливание меню
+  do{Menu();}while(isProgramActive);
 }
 
 //Функция вызова диалогового меню
@@ -46,7 +39,7 @@ int Menu()
       Display();
       break;
     case 4:
-      isProgramActive = false;
+      Destroy();
       break;
     default:
       printf("Неправильный ответ");
@@ -54,26 +47,23 @@ int Menu()
   }
 }
 
-//Функция добавления элемента в стек (не больше 5 элементов)
+//Функция добавления элемента в стек
 int Add()
 {
+  pTemp = malloc(sizeof(struct StackItem));
   pTemp -> pred = SP;
-  if (pTemp -> pointer < 5){
-    printf("Введите число: \n");
-    scanf("%d", &pArrInt[pTemp -> pointer]);
-    pTemp -> pointer++;
-    SP = pTemp;
-  }else{
-    printf("Стек заполнен \n");
-  }
+  printf("Введите число: \n");
+  scanf("%s", pTemp -> info);
+  SP = pTemp;
 }
 
 //Функция удаления элементов из стека 
 int Del()
 {
-  if (pTemp -> pointer > 0){
-    pArrInt[pTemp -> pointer-1] = 0;
-    pTemp -> pointer--;
+  if (SP != NULL){
+    pTemp = SP;
+    SP = SP -> pred;
+    free(pTemp);
   }else{
     printf("Стек пустой \n");
   }
@@ -83,10 +73,21 @@ int Del()
 int Display()
 {
   printf("*** \n");
-  for(int i = 0; i < pTemp -> pointer; i++){
-    if (pArrInt[i] > 0){
-      printf("%d\n", pArrInt[i]);
-    }
+  pTemp = SP;
+  while(pTemp != NULL){
+    printf("%s\n", pTemp -> info);
+    pTemp = pTemp -> pred;
   }
   printf("*** \n");
+}
+
+//Функция освобождения памяти и уничтожения стека
+int Destroy()
+{
+  isProgramActive = false;
+  while(SP != NULL){
+    pTemp = SP;
+    SP = SP -> pred;
+    free(pTemp);
+  }
 }
