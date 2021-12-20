@@ -16,15 +16,53 @@ _Bool isProgramActive = true;
 struct StackItem *SP;
 struct StackItem *pTemp;
 
-int main()
+//Функция добавления элемента в стек
+void Add()
 {
-  SP = NULL;
-  //Зацикливание меню
-  do{Menu();}while(isProgramActive);
+  pTemp = malloc(sizeof(struct StackItem));
+  pTemp -> pred = SP;
+  printf("Введите число: \n");
+  scanf("%s", pTemp -> info);
+  SP = pTemp;
+}
+
+//Функция удаления элементов из стека 
+void Del()
+{
+  if (SP != NULL){
+    pTemp = SP;
+    SP = SP -> pred;
+    free(pTemp);
+  }else{
+    printf("Стек пустой \n");
+  }
+}
+
+//Функция вывода стека
+void Display()
+{
+  printf("*** \n");
+  pTemp = SP;
+  while(pTemp != NULL){
+    printf("%s\n", pTemp -> info);
+    pTemp = pTemp -> pred;
+  }
+  printf("*** \n");
+}
+
+//Функция освобождения памяти и уничтожения стека
+void Destroy()
+{
+  isProgramActive = false;
+  while(SP != NULL){
+    pTemp = SP;
+    SP = SP -> pred;
+    free(pTemp);
+  }
 }
 
 //Функция вызова диалогового меню
-int Menu()
+void Menu()
 {
   printf("1.Добавить элемент \n2.Удалить элемент \n3.Вывести стек \n4.Выйти \n");
   scanf("%d", &answer);
@@ -47,47 +85,10 @@ int Menu()
   }
 }
 
-//Функция добавления элемента в стек
-int Add()
+//Главная функция
+void main()
 {
-  pTemp = malloc(sizeof(struct StackItem));
-  pTemp -> pred = SP;
-  printf("Введите число: \n");
-  scanf("%s", pTemp -> info);
-  SP = pTemp;
-}
-
-//Функция удаления элементов из стека 
-int Del()
-{
-  if (SP != NULL){
-    pTemp = SP;
-    SP = SP -> pred;
-    free(pTemp);
-  }else{
-    printf("Стек пустой \n");
-  }
-}
-
-//Функция вывода стека
-int Display()
-{
-  printf("*** \n");
-  pTemp = SP;
-  while(pTemp != NULL){
-    printf("%s\n", pTemp -> info);
-    pTemp = pTemp -> pred;
-  }
-  printf("*** \n");
-}
-
-//Функция освобождения памяти и уничтожения стека
-int Destroy()
-{
-  isProgramActive = false;
-  while(SP != NULL){
-    pTemp = SP;
-    SP = SP -> pred;
-    free(pTemp);
-  }
+  SP = NULL;
+  //Зацикливание меню
+  do{Menu();}while(isProgramActive);
 }
