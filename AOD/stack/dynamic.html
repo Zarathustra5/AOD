@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+    	<title>Стек</title>
+      <meta charset="UTF-8"> 
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+      <meta name="format-detection" content="telephone=0">
+    </head>
+    <body>
+      <script>
+        //Объявление переменных
+        let answer,
+            isProgramActive = true,
+            pTemp,
+            sp = null;
+
+        function StackItem(info, prev){
+          this.info = info;
+          this.prev = prev;
+        }
+
+        //Функция добавления элемента в стек (не больше 5 элементов)
+        function add(){
+          answer = prompt("Введите число: ");
+          pTemp = new StackItem(answer, sp);
+          sp = pTemp;
+        }
+
+        //Функция удаления элементов из стека 
+        function del(){
+          if (sp !== null){
+            pTemp = sp;
+            sp = pTemp.prev;
+          }else{
+            alert("Стек пустой")
+          }
+        }
+
+        //Функция вывода стека
+        function display(){
+          let res = "";
+          pTemp = sp;
+          while(pTemp !== null){
+            res += pTemp.info + "  ";
+            pTemp = pTemp.prev;
+          }
+          alert(res);
+        }
+
+        //Функция вызова диалогового меню
+        function menu(){
+          answer = prompt("1.Добавить элемент \n2.Удалить элемент \n3.Вывести стек \n4.Выйти");
+          switch(answer){
+            case "1":
+              add(); 
+              break;
+            case "2":
+              del();
+              break;
+            case "3":
+              display();
+              break;
+            case "4":
+              isProgramActive = false;
+              break
+            default:
+              alert("Неправильный ответ");
+          }
+        } 
+
+        //Зацикливание меню
+        do{menu()}while(isProgramActive);
+      </script>
+    </body>
+</html>
