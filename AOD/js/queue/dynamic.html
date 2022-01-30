@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+    	<title>Очередь</title>
+      <meta charset="UTF-8"> 
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+      <meta name="format-detection" content="telephone=0">
+    </head>
+    <body>
+      <script>
+        //Объявление переменных
+        let answer,
+            isProgramActive = true,
+            pTemp,
+            pFirst = null,
+            pLast = null;
+
+        function StackItem(info, next){
+          this.info = info;
+          this.next = next;
+        }
+
+        //Функция добавления элемента в стек (не больше 5 элементов)
+        function add(){
+          answer = prompt("Введите число: ");
+          if (pFirst == null){
+            pFirst = new StackItem(answer, null);
+            pLast = pFirst;
+          }else{
+            pTemp = new StackItem(answer, null);
+            pLast.next = pTemp;
+            pLast = pTemp;
+          }
+        }
+
+        //Функция удаления элементов из стека 
+        function del(){
+          if (pFirst !== null){
+            pFirst = pFirst.next;
+          }else{
+            alert("Стек пустой")
+          }
+        }
+
+        //Функция вывода стека
+        function display(){
+          let res = "";
+          pTemp = pFirst;
+          while(pTemp !== null){
+            res += pTemp.info + "  ";
+            pTemp = pTemp.next;
+          }
+          alert(res);
+        }
+
+        //Функция вызова диалогового меню
+        function menu(){
+          answer = prompt("1.Добавить элемент \n2.Удалить элемент \n3.Вывести стек \n4.Выйти");
+          switch(answer){
+            case "1":
+              add(); 
+              break;
+            case "2":
+              del();
+              break;
+            case "3":
+              display();
+              break;
+            case "4":
+              isProgramActive = false;
+              break
+            default:
+              alert("Неправильный ответ");
+          }
+        } 
+
+        //Зацикливание меню
+        do{menu()}while(isProgramActive);
+      </script>
+    </body>
+</html>

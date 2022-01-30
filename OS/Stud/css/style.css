@@ -1,0 +1,169 @@
+body, html{
+  margin:0;
+  height:100%;
+}
+.wrapper{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  cursor:default;
+  background-image: url("../img/wallpapers.jpg");
+  background-size: 100% auto;
+  overflow:hidden;
+}
+.page{
+  flex:1 1 auto;
+}
+
+/*Окно приложения*/
+.window{
+  max-width:700px;
+  margin:50px auto;
+  border:1px solid black;
+  background-color:Honeydew;
+}
+@media(max-width:750px){
+  .window{
+    margin:50px 30px;
+  }
+}
+
+/*Строка инструментов приложения*/
+.window__toolbar{
+  background-color:gray;
+  color:white;
+  height:25px;
+  display:flex;
+  justify-content:space-between;
+}
+nav p{
+  margin:0;
+  padding-left:5px;
+  font-size:13px;
+  line-height:24px;
+}
+.panel{
+  display:flex;
+  align-items:center;
+}
+hr{
+  border:none;
+  cursor:pointer;
+  width:30px;
+  height:100%;
+  position:relative;
+  margin:0;
+}
+#escape:after{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  left:0; right:0;
+  margin:auto;
+  width:7px;
+  height:1px;
+  border-bottom:1px solid white;
+}
+#fullscreen:after{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  left:0; right:0;
+  margin:auto;
+  width:7px;
+  height:5px;
+  border:1px solid white;
+}
+#close:after{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  left:0; right:0;
+  margin:auto;
+  width:10px;
+  height:1px;
+  transform:rotate(-45deg);
+  border-bottom:1px solid white;
+}
+#close:before{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  left:1px; right:0;
+  margin:auto;
+  width:10px;
+  height:1px;
+  transform:rotate(45deg);
+  border-bottom:1px solid white;
+}
+hr:hover{
+  background-color:#0ea4d3;
+}
+#close:hover{
+  background-color:red;
+}
+
+/*Контент приложения*/
+.window__body{
+  padding:0 10px 10px 10px;
+  line-height:26px;
+}
+li:hover{
+  text-decoration:underline;
+  cursor:pointer;
+}
+
+/*Нижняя панель рабочего стола*/
+.footer{
+  position:relative;
+}
+.footer__bar{
+  width:100%;
+  height:40px;
+  background-color:#b37c29;
+  opacity:0.7;
+  display:flex;
+  justify-content:space-between;
+}
+.left,
+.right{
+  display:flex;
+  align-items:center;
+}
+.start-menu_icon{
+  width:35px;
+  height:35px;
+  cursor:pointer;
+  padding:0 20px;
+}
+.start-menu_icon:hover{
+  opacity:0.8;
+}
+.explorer img{
+  width:35px;
+  height:35px;
+}
+.icon{
+  cursor:pointer;
+  padding:0 20px;
+  border-left:1px solid transparent;
+  border-right:1px solid transparent;
+}
+.icon:hover{
+  border-right:1px solid rgb(255,255,255,0.3);
+  border-left:1px solid rgb(255,255,255,0.3);
+  opacity:0.8;
+}
+.internet,
+.sound{
+  padding:0 5px;
+}
+.small_icon img{
+  width:15px;
+  height:100%;
+}
+.now{
+  color:white;
+  text-align:center;
+  font-size:13px;
+}
