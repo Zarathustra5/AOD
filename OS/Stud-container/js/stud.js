@@ -1,7 +1,7 @@
 //Объявление класса Stud
 class Stud{
   constructor(surname){     //Конструктор
-    this._surname = surname;   //фамилия студента
+    this._surname = surname;   //фамилия студента (знак "_" в начале означает закрытое свойство
     this._score = [];          //оценки студента 
   }
   get getSurname(){         //Геттер, возвращающий фамилию
@@ -49,6 +49,6 @@ class Stud{
     }
   }
   get getData(){   //Геттер, возвращающий полную информацию о студенте 
-    return `${this._surname}:  ${this._score}`
+    return this._surname + ":  " + this._score;
   }
 }
