@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Студент</title>
+  <title>Группа студетов</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -10,7 +10,7 @@
     <main class="page">
       <div class="window">
         <nav class="window__toolbar">
-          <p>Программа Stud</p>
+          <p>Программа StudContainer</p>
           <div class="panel">
             <hr id="escape">
             <hr id="fullscreen">
@@ -20,13 +20,9 @@
         <div class="window__body">
           <h2 class="title">Выберите функцию</h2>
           <ol>
-            <li onclick="showSurname()">Вывести фамилию</li>    <!--События нажатия-->
-            <li onclick="changeSurname()">Изменить фамилию</li>
-            <li onclick="showScore()">Вывести оценку</li>
-            <li onclick="addScore()">Добавить оценку</li>
-            <li onclick="changeScore()">Изменить оценку</li>
-            <li onclick="showAverage()">Средний балл</li>
-            <li onclick="showData()">Показать всю информацию</li>
+            <li onclick="addStud()">Добавить студента</li>    <!--События нажатия-->
+            <li onclick="delStud()">Удалить студента</li>
+            <li onclick="getData()">Показать всю информацию</li>
           </ol>
         </div>
       </div>

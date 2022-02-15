@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>План</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <main class="page">
+      <div class="window">
+        <nav class="window__toolbar">
+          <p>Программа Plan</p>
+          <div class="panel">
+            <hr id="escape">
+            <hr id="fullscreen">
+            <hr id="close">
+          </div>
+        </nav>
+        <div class="window__body">
+          <h2 class="title">Выберите функцию</h2>
+          <ol>
+            <li onclick="showName()">Вывести название плана</li>    <!--События нажатия-->
+            <li onclick="changeName()">Изменить название плана</li>
+            <li onclick="showHours()">Вывести число часов по названию предмета</li>
+            <li onclick="addHours()">Добавить предмет и количество часов</li>
+            <li onclick="changeHours()">Изменить число часов по названию предмета</li>
+            <li onclick="showSum()">Сумма всех часов</li>
+            <li onclick="showData()">Показать всю информацию</li>
+          </ol>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!--Присоединение модулей-->
+  <script src="js/plan.js"></script>
+  <script src="js/demo.js"></script>
+</body>
+</html>
