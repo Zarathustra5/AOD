@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Образовательное учреждение</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <main class="page">
+      <div class="window institution _active">
+        <nav class="window__toolbar">
+          <p>Программа Institution</p>
+          <div class="panel">
+            <hr class="escape">
+            <hr class="fullscreen">
+            <hr class="close">
+          </div>
+        </nav>
+        <div class="window__body">
+          <h2 class="title">Выберите функцию</h2>
+          <ol>
+            <li onclick="showName()">Вывести название учреждения</li>    <!--События нажатия-->
+            <li onclick="changeName()">Изменить название учреждения</li>
+            <li onclick="addPlan()">Добавить план</li>
+            <li onclick="deletePlan()">Удалить последний добавленный план</li>
+            <li onclick="getInfo()">Вывести всю информацию</li>
+            <li onclick="choosePlan()">Выбрать план</li>
+          </ol>
+        </div>
+      </div>
+      <div class="window plan">
+        <nav class="window__toolbar">
+          <p>Программа Institution</p>
+          <div class="panel">
+            <hr class="escape">
+            <hr class="fullscreen">
+            <hr class="close">
+          </div>
+        </nav>
+        <div class="window__body">
+          <h2 class="title">Выберите функцию</h2>
+          <ol>
+            <li onclick="showName()">Вывести название учреждения</li>    <!--События нажатия-->
+            <li onclick="changeName()">Изменить название учреждения</li>
+            <li onclick="addPlan()">Добавить план</li>
+            <li onclick="deletePlan()">Удалить последний добавленный план</li>
+            <li onclick="getInfo()">Вывести всю информацию</li>
+            <li onclick="choosePlan()">Выбрать план</li>
+          </ol>
+        </div>
+      </div>
+      <div class="window dialogue dialogue_input _active">
+        <nav class="window__toolbar">
+          <p>Программа Institution</p>
+          <div class="panel">
+            <hr class="escape">
+            <hr class="fullscreen">
+            <hr class="close">
+          </div>
+        </nav>
+        <form action="#" class="window__body dialogue__form">
+          <p class="label">Введите название учреждения</p>
+          <input name="answer" type="text" class="input" placeholder="Введите значение">
+          <button class="button" type="submit">Далее</button>
+        </form>
+      </div>
+      <div class="window dialogue dialogue_output">
+        <nav class="window__toolbar">
+          <p>Программа Institution</p>
+          <div class="panel">
+            <hr class="escape">
+            <hr class="fullscreen">
+            <hr class="close">
+          </div>
+        </nav>
+        <div class="window__body">
+          <p class="label">Вывод</p>
+          <p></p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!--Присоединение модулей-->
+  <script src="js/plan.js"></script>
+  <script src="js/institution.js"></script>
+  <script src="js/demo.js"></script>
+</body>
+</html>
