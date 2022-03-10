@@ -45,4 +45,7 @@ class Institution{
       return "Планов не найдено";
     }
   }
+  get getPlans(){
+    return this._plans;
+  }
 }
