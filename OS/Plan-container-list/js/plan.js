@@ -3,6 +3,13 @@ class Plan{
   constructor(name){     //Конструктор
     this._name = name;   //название плана (знак "_" в начале означает закрытое свойство
     this._subjects = {};          //часы предметов
+    this._nextPlan;         //Следуюший план
+  }
+  get getNextPlan(){         //Геттер, возвращающий следующий план
+    return this._nextPlan;
+  }
+  set setNextPlan(newNextPlan){   //Сеттер, изменяющий следующий план
+    this._nextPlan = newNextPlan;
   }
   get getName(){         //Геттер, возвращающий название плана
     return this._name;

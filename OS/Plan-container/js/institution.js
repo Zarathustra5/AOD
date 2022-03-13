@@ -23,7 +23,7 @@ class Institution{
       return "Планов не найдено";
     }
   }
-  get getInfo(){
+  get getInfo(){        //Геттер получения всей информации
     if (this._plans.length > 0){
       let res = "";
       for (let el of this._plans){
@@ -34,7 +34,7 @@ class Institution{
       return "Планов не найдено";
     }
   }
-  choosePlan(index){
+  choosePlan(index){       //Метод выбора плана
     if (this._plans.length > 0){
       if (index < this._plans.length){
         return this._plans[index];
@@ -45,7 +45,15 @@ class Institution{
       return "Планов не найдено";
     }
   }
-  get getPlans(){
+  searchPlan(planName){  //Метод поиска плана
+    for (let i = 0; i < this._plans.length; i++){
+      if (this._plans[i].getName == planName){
+        return i;
+      }
+    }
+    return -1;
+  }
+  get getPlans(){        //Геттер получения массива планов
     return this._plans;
   }
 }

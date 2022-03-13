@@ -63,33 +63,28 @@ function searchPlan() {
 
 //6.Вывести всю информацию
 function getInfo() {
-  let mas = tisbi.getPlans;
-  if(mas.length > 0){
-    for (let el of mas){
-      alert(el.getData);
-    }
-  }else{
-    dialogueOutput.classList.add("_active");
-    dialogueOutput.lastElementChild.lastElementChild.textContent = "Сначала добавьте план";
-  }
+  tisbi.getInfo();
 }
 
 //7.Выбрать план
 function choosePlan() {
-  let mas = tisbi.getPlans;
-  if(mas.length > 0){
+  let temp = tisbi.getFirstPlan;
+  if(temp != null){
     let windowPlan = document.querySelector(".plan");
     let titlePlan = document.querySelector(".plan .window__body .title");
     titlePlan.insertAdjacentHTML("afterend", `<select><option>Выберите план</option></select>`);
-    for (let el of mas){
+    let temps = [],
+        count = 0;
+    while(temp != null){
+      temps.push(temp);
       let selectPlan = document.querySelector(".plan select");
-      selectPlan.insertAdjacentHTML("beforeend", `<option>${el.getName}</option>`);
-      selectPlan.lastElementChild.onclick = () => currentPlan = el;
+      selectPlan.insertAdjacentHTML("beforeend", `<option>${temp.getName}</option>`);
+      selectPlan.lastElementChild.onclick = () => currentPlan = temps[count++];
+      temp = temp.getNextPlan;
     }
     windowPlan.classList.add("_active");
   }else{
-    dialogueOutput.classList.add("_active");
-    dialogueOutput.lastElementChild.lastElementChild.textContent = "Сначала добавьте план";
+    alert("Сначала добавьте план");
   }
 }
 
