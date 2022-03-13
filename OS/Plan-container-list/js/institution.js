@@ -25,6 +25,18 @@ class Institution{
       return "Планов не найдено";
     }
   }
+  searchPlan(planName){  //Метод поиска плана
+    let temp = this._firstPlan;
+    let count = 0;
+    while(temp != null){
+      if (temp.getName == planName){
+        return count;
+      }
+      count++;
+      temp = temp.getNextPlan;
+    }
+    return "План не найден";
+  }
   getInfo(){        //Метод получения всей информации
     if (this._firstPlan != null){
       let temp = this._firstPlan;
@@ -39,20 +51,23 @@ class Institution{
     }
   }
   choosePlan(){       //Метод выбора плана
-  }
-  searchPlan(planName){  //Метод поиска плана
     let temp = this._firstPlan;
-    let count = 0;
-    while(temp != null){
-      if (temp.getName == planName){
-        return count;
+    if(temp != null){
+      let windowPlan = document.querySelector(".plan");
+      let titlePlan = document.querySelector(".plan .window__body .title");
+      titlePlan.insertAdjacentHTML("afterend", `<select><option>Выберите план</option></select>`);
+      let temps = [],
+          count = 0;
+      while(temp != null){
+        temps.push(temp);
+        let selectPlan = document.querySelector(".plan select");
+        selectPlan.insertAdjacentHTML("beforeend", `<option>${temp.getName}</option>`);
+        selectPlan.lastElementChild.onclick = () => currentPlan = temps[count++];
+        temp = temp.getNextPlan;
       }
-      count++;
-      temp = temp.getNextPlan;
+      windowPlan.classList.add("_active");
+    }else{
+      alert("Сначала добавьте план");
     }
-    return -1;
-  }
-  get getFirstPlan(){        //Геттер получения массива планов
-    return this._firstPlan;
   }
 }

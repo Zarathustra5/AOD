@@ -53,44 +53,17 @@ function deletePlan() {
 
 //5.Найти план
 function searchPlan() {
-  let res = tisbi.searchPlan(prompt("Введите название плана"));
-  if (res >= 0){
-    alert(res);
-  }else{
-    alert("План не найден");
-  }
+  alert(tisbi.searchPlan(prompt("Введите название плана")));
 }
 
 //6.Вывести всю информацию
 function getInfo() {
-  let mas = tisbi.getPlans;
-  if(mas.length > 0){
-    for (let el of mas){
-      alert(el.getData);
-    }
-  }else{
-    dialogueOutput.classList.add("_active");
-    dialogueOutput.lastElementChild.lastElementChild.textContent = "Сначала добавьте план";
-  }
+  tisbi.getInfo();
 }
 
 //7.Выбрать план
 function choosePlan() {
-  let mas = tisbi.getPlans;
-  if(mas.length > 0){
-    let windowPlan = document.querySelector(".plan");
-    let titlePlan = document.querySelector(".plan .window__body .title");
-    titlePlan.insertAdjacentHTML("afterend", `<select><option>Выберите план</option></select>`);
-    for (let el of mas){
-      let selectPlan = document.querySelector(".plan select");
-      selectPlan.insertAdjacentHTML("beforeend", `<option>${el.getName}</option>`);
-      selectPlan.lastElementChild.onclick = () => currentPlan = el;
-    }
-    windowPlan.classList.add("_active");
-  }else{
-    dialogueOutput.classList.add("_active");
-    dialogueOutput.lastElementChild.lastElementChild.textContent = "Сначала добавьте план";
-  }
+  tisbi.choosePlan();
 }
 
 //Кнопка закрыть

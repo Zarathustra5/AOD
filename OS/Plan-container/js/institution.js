@@ -23,37 +23,39 @@ class Institution{
       return "Планов не найдено";
     }
   }
-  get getInfo(){        //Геттер получения всей информации
-    if (this._plans.length > 0){
-      let res = "";
-      for (let el of this._plans){
-        res += el.getData;
-      }
-      return res;
-    }else{
-      return "Планов не найдено";
-    }
-  }
-  choosePlan(index){       //Метод выбора плана
-    if (this._plans.length > 0){
-      if (index < this._plans.length){
-        return this._plans[index];
-      }else{
-        return "План по данному индексу не найден";
-      }
-    }else{
-      return "Планов не найдено";
-    }
-  }
   searchPlan(planName){  //Метод поиска плана
+    let res = -1;
     for (let i = 0; i < this._plans.length; i++){
       if (this._plans[i].getName == planName){
-        return i;
+        res = i;
+        break;
       }
     }
-    return -1;
+    return res >= 0 ? res : "План не найден";
   }
-  get getPlans(){        //Геттер получения массива планов
-    return this._plans;
+  getInfo(){        //Метод получения всей информации
+    if (this._plans.length > 0){
+      for (let el of this._plans){
+        alert(el.getData);
+      }
+    }else{
+      alert("Планов не найдено");
+    }
+  }
+  choosePlan(){       //Метод выбора плана
+    if(this._plans.length > 0){
+      let windowPlan = document.querySelector(".plan");
+      let titlePlan = document.querySelector(".plan .window__body .title");
+      titlePlan.insertAdjacentHTML("afterend", `<select><option>Выберите план</option></select>`);
+      for (let el of this._plans){
+        let selectPlan = document.querySelector(".plan select");
+        selectPlan.insertAdjacentHTML("beforeend", `<option>${el.getName}</option>`);
+        selectPlan.lastElementChild.onclick = () => currentPlan = el;
+      }
+      windowPlan.classList.add("_active");
+    }else{
+      dialogueOutput.classList.add("_active");
+      dialogueOutput.lastElementChild.lastElementChild.textContent = "Сначала добавьте план";
+    }
   }
 }
