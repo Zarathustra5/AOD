@@ -35,7 +35,6 @@ function createTree(n){
       }
     }
   }
-  console.log(rootNode);
 }
 
 //Добавить вершину
@@ -121,11 +120,11 @@ function postOrder(){
   alert(res);
 }
 
+//Меню
 function menu(){
   switch(prompt("Выберите действие:\n1.Добавить вершину\n2.Поиск вершины\n3.Вывод в симметричном порядке\n4.Вывод в обратном порядке\n5.Выход")){
     case "1":
       addNode(Number(prompt("Введите число")));
-      console.log(rootNode);
       break;
     case "2":
       alert(searchNode(Number(prompt("Введите вершину"))));
