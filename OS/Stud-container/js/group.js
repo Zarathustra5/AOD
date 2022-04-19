@@ -4,6 +4,9 @@ class Group{
     this._name = name;  //Название группы
     this._studs = [];   //Массив объектов студентов
   }
+  get getName(){
+    return this._name;
+  }
   set addStud(newStud){   //Сеттер добавления студента
     this._studs.push(newStud);
   }
